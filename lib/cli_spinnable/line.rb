@@ -6,7 +6,6 @@ module CliSpinnable
     NEWLINE = "\n".freeze
 
     attr_accessor :newline
-    attr_reader :str, :sign
 
     def initialize(str = nil, sign = nil, newline = nil)
       self.str = str
@@ -18,12 +17,12 @@ module CliSpinnable
       sign.sign = sym
     end
 
-    def <<(str)
-      self.str << ensure_single_line(String(str))
+    def <<(arg)
+      str << ensure_single_line(String(arg))
     end
 
-    def str=(str)
-      @str = ensure_single_line(String(str))
+    def str=(arg)
+      @str = ensure_single_line(String(arg))
     end
 
     def to_s_resetting_newline
@@ -31,6 +30,8 @@ module CliSpinnable
     end
 
     private
+
+    attr_reader :str, :sign
 
     def ensure_single_line(str)
       raise Error, 'Multiline strings not allowed' if str.include?(NEWLINE)

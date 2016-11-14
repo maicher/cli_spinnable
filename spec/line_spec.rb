@@ -4,7 +4,7 @@ require 'pry'
 describe CliSpinnable::Line do
   subject { CliSpinnable::Line.new }
 
-  %i(str str= sign sign= newline newline= <<).each do |method|
+  %i(str= sign= newline= <<).each do |method|
     it { expect(subject).to respond_to(method) }
   end
 
