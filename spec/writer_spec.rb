@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe CliSpinnable::Writer do
-  SEPARATOR = "\n".freeze
   let(:out) { StringIO.new }
   let(:line_mock) do
     Class.new do
       attr_accessor :str, :sign, :newline
       def to_s_resetting_newline
-        'Text' + SEPARATOR
+        'Text'
       end
     end.new
   end
