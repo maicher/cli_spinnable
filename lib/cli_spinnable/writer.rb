@@ -40,7 +40,6 @@ module CliSpinnable
     private
 
     attr_reader :line, :queue, :session, :output
-    attr_accessor :terminate
 
     def push(attr, val)
       raise Error, 'Session finalized' unless session.status
