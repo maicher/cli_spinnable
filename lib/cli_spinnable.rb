@@ -1,4 +1,5 @@
 require 'cli_spinnable/version'
+require 'cli_spinnable/cli_spinnable_error'
 require 'cli_spinnable/line/colourable_string'
 require 'cli_spinnable/line/sign'
 require 'cli_spinnable/line'
@@ -10,9 +11,7 @@ module CliSpinnable
     yield writer
     writer.finalize
     self
-  rescue CliSpinnable::Writer::Error,
-         CliSpinnable::Line::Sign::Error,
-         CliSpinnable::Line::Error => e
+  rescue CliSpinnableError => e
     raise e
   rescue StandardError => e
     writer.failure

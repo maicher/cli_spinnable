@@ -4,6 +4,8 @@
 [![Build Status](https://travis-ci.org/maicher/cli_spinnable.svg?branch=master)](https://travis-ci.org/maicher/cli_spinnable)
 [![Code Climate](https://codeclimate.com/github/maicher/cli_spinnable/badges/gpa.svg)](https://codeclimate.com/github/maicher/cli_spinnable)
 
+CliSpinnable, a module that enriches ruby command line interface with rotating spinner, check mark (&#10003;) and and fail mark (&#215;).
+
 ## Dependencies
 
   * Ruby >= 2.1
@@ -24,6 +26,42 @@ Or install it yourself as:
 
     $ gem install cli_spinnable
 
+## How to use
+
+1. Mix-in CliSpinnable module into YourClass
+
+(for other ways of initializations see examples)
+
+        class YourClass
+          include CliSpinnable
+        
+2. Call `with_spinner` inside `your_method` providing a block         
+        
+          def your_method
+            with_spinner do |cli|
+              # ...
+            end
+          end
+
+3. Use `#print` and `#tick` methods
+        
+        with_spinner do |cli|
+          cli.print 'Downloading something'
+          sleep 1 # some long operation
+          cli.print '...downloaded 1MB'
+          cli.tick
+          cli.print 'Processing data'
+          sleep 1 # other long operation
+          cli.tick
+        end
+        
+4. If operation will fail (exception raised within the block), `x` will be printed
+
+        with_spinner do |cli|
+          cli.print 'Trying to do something that can fail'
+          1 / 0 # raise Error
+          cli.tick # you will not see the tick
+        end
 
 ## Development
 
@@ -33,7 +71,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/maicher/pg_cli_spinnable. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/maicher/cli_spinnable. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

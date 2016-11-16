@@ -14,4 +14,4 @@ ratings:
   exclude_paths:
     - spec/
 exclude_paths:
-  - "examples/examples.rb"
+  - "examples/*.rb"

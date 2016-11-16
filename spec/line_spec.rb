@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe CliSpinnable::Line do
   subject { CliSpinnable::Line.new }

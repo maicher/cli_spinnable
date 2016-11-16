@@ -1,6 +1,6 @@
 module CliSpinnable
   class Line
-    class Error < StandardError; end
+    class Error < CliSpinnableError; end
 
     CARRIAGE_RETURN = "\r".freeze
     NEWLINE = "\n".freeze
@@ -10,7 +10,7 @@ module CliSpinnable
     def initialize(str = nil, sign = nil, newline = nil)
       self.str = str
       @sign = Sign.new(sign)
-      @newline = newline
+      self.newline = newline
     end
 
     def sign=(sym)

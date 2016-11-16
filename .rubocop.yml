@@ -1,6 +1,10 @@
 AllCops:
   TargetRubyVersion: 2.1
 
+AllCops:
+  Exclude:
+    - 'examples/*.rb'
+
 Metrics/LineLength:
   Max: 120
 

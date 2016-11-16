@@ -1,6 +1,6 @@
 module CliSpinnable
   class Writer
-    class Error < StandardError; end
+    class Error < CliSpinnableError; end
 
     REFRESH_DELAY_IN_SECONDS = 0.1
 
@@ -39,7 +39,7 @@ module CliSpinnable
 
     private
 
-    attr_reader :line, :queue, :session, :output
+    attr_reader :output, :line, :queue, :session
 
     def push(attr, val)
       raise Error, 'Session finalized' unless session.status

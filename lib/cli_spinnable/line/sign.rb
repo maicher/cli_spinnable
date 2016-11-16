@@ -3,7 +3,7 @@ module CliSpinnable
     class Sign
       using ColourableString
 
-      class Error < StandardError; end
+      class Error < CliSpinnableError; end
 
       SPIN = %w(- \\ | /).freeze
       TICK = "\u2713".green.freeze
@@ -13,7 +13,7 @@ module CliSpinnable
       AVAILABLE_SIGNS = %i(spin tick fail blank).freeze
 
       def initialize(sign = nil)
-        @sign = sign || :blank
+        self.sign = sign || :blank
       end
 
       def sign=(sign)
