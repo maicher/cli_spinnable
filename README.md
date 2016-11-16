@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/cli_spinnable.svg)](https://badge.fury.io/rb/cli_spinnable)
 [![Build Status](https://travis-ci.org/maicher/cli_spinnable.svg?branch=master)](https://travis-ci.org/maicher/cli_spinnable)
 [![Code Climate](https://codeclimate.com/github/maicher/cli_spinnable/badges/gpa.svg)](https://codeclimate.com/github/maicher/cli_spinnable)
+[![Test Coverage](https://codeclimate.com/github/maicher/cli_spinnable/badges/coverage.svg)](https://codeclimate.com/github/maicher/cli_spinnable/coverage)
 
 CliSpinnable, a module that enriches ruby command line interface with rotating spinner, check mark (&#10003;) and and fail mark (&#215;).
 
@@ -30,8 +31,6 @@ Or install it yourself as:
 
 1. Mix-in CliSpinnable module into YourClass
 
-(for other ways of initializations see examples)
-
         class YourClass
           include CliSpinnable
         
@@ -55,7 +54,7 @@ Or install it yourself as:
           cli.tick
         end
         
-4. If operation will fail (exception raised within the block), `x` will be printed
+4. If operation will fail (exception raised within the block), &#215; will be printed
 
         with_spinner do |cli|
           cli.print 'Trying to do something that can fail'

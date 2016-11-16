@@ -2,4 +2,8 @@ sudo: false
 language: ruby
 rvm:
   - 2.1.8
+env:
+  global:
+    CODECLIMATE_REPO_TOKEN: 878aaba630e5c7040aa3d3b0fc0cab946ac392cbf00ca59f1540e6b30017e84e
 before_install: gem install bundler -v 1.13.3
+after_success: codeclimate-test-reporter
