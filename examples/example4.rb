@@ -6,7 +6,7 @@ module Cli
   extend CliSpinnable
 end
 
-# Close the block before reading from input.
+# Don't print multiline strings inside `with_spinner` block.
 
 # Good:
 Cli.with_spinner do |cli|
@@ -15,25 +15,21 @@ Cli.with_spinner do |cli|
   cli.tick
 end
 
-print 'Enter name: '
-name = gets.chomp
-
-Cli.with_spinner do |cli|
-  cli.print "Doing something with name #{name}"
-  sleep 1
-  cli.tick
-end
+print "Multiline\nstring"
 
 # Bad:
 Cli.with_spinner do |cli|
   cli.print 'Downloading something'
   sleep 1
   cli.tick
+  print "Multiline\nstring"
+end
+s
+# Bad:
 
-  print 'Enter name: '
-  name = gets.chomp
-
-  cli.print "Doing something with name #{name}"
+Cli.with_spinner do |cli|
+  cli.print 'Downloading something'
   sleep 1
   cli.tick
+  cli.print "Multiline\nstring"
 end

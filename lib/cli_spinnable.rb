@@ -6,16 +6,24 @@ require 'cli_spinnable/line'
 require 'cli_spinnable/writer'
 
 module CliSpinnable
-  def with_spinner
-    writer = Writer.new(STDOUT, Line.new)
-    yield writer
-    writer.finalize
-    self
-  rescue CliSpinnableError => e
-    raise e
-  rescue StandardError => e
-    writer.failure
-    writer.finalize
-    raise e
+  module Methods
+    def with_spinner
+      writer = Writer.new(STDOUT, Line.new)
+      yield writer
+      writer.finalize
+      self
+    rescue CliSpinnableError => e
+      raise e
+    rescue StandardError => e
+      writer.failure
+      writer.finalize
+      raise e
+    end
+  end
+
+  include Methods
+
+  class << self
+    include Methods
   end
 end

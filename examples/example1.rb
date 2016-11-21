@@ -1,34 +1,40 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
+## This example shows different ways of accessing the `.with_spinner` method.
+
 require 'cli_spinnable'
 
-class Foo
+# 1. Use `CliSpinnable.with_spinner` directly.
+CliSpinnable.with_spinner do |cli|
+  cli.print 'Downloading something'
+  sleep 1
+  cli.tick
+end
+
+# 2. Create own module and extend it with CliSpinnable.
+#    This way you will have own namespace for `.with_spinner` method.
+module Foo
+  extend CliSpinnable
+end
+
+Foo.with_spinner do |cli|
+  cli.print 'Downloading something'
+  sleep 1
+  cli.tick
+end
+
+# 3. Include CliSpinnable module in own class.
+#    This way you can access `with_spinner` method within that class.
+class Bar
   include CliSpinnable
 
   def call
-    puts 'HAPPY RUN (ending with success):'
     with_spinner do |cli|
       cli.print 'Downloading something'
       sleep 1
-      cli.print '...downloaded 1MB'
-      cli.tick
-      cli.print 'Processing data'
-      sleep 1
-      cli.tick
-    end
-
-    puts 'SAD RUN (ending with fail):'
-    with_spinner do |cli|
-      cli.print 'Downloading something'
-      sleep 1
-      cli.print '...downloaded 1MB'
-      cli.tick
-      cli.print 'Processing data'
-      sleep 1
-      1 / 0
       cli.tick
     end
   end
 end
 
-Foo.new.call
+Bar.new.call

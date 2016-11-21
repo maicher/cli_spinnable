@@ -27,12 +27,12 @@ module CliSpinnable
     def failure
       push(:sign=, :fail)
       push(:newline=, true)
+      push(:str=, '')
       self
     end
 
     def finalize
       push(:sign=, :blank)
-      push(:str=, '')
       finalize_session
       self
     end
