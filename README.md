@@ -5,7 +5,10 @@
 [![Code Climate](https://codeclimate.com/github/maicher/cli_spinnable/badges/gpa.svg)](https://codeclimate.com/github/maicher/cli_spinnable)
 [![Test Coverage](https://codeclimate.com/github/maicher/cli_spinnable/badges/coverage.svg)](https://codeclimate.com/github/maicher/cli_spinnable/coverage)
 
-CliSpinnable, a module that enriches ruby command line interface with rotating spinner, check mark (&#10003;) and and fail mark (&#215;).
+CliSpinnable, a module that enriches ruby command line with:
+ - rotating spinner
+ - check mark &#10003;
+ - fail mark &#215;
 
 ## Dependencies
 
@@ -61,6 +64,10 @@ Or install it yourself as:
           1 / 0 # raise Error
           cli.tick # you will not see the tick
         end
+        
+## Demo
+
+![demo.git](https://raw.githubusercontent.com/maicher/cli_spinnable/master/examples/demo.gif)
 
 ## Development
 
